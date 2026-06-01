@@ -1,0 +1,10 @@
+node_modules
+dist
+*.local
+.DS_Store
+.vercel
+
+# Stray 236 MB binary that lives in this folder — never commit or deploy it.
+claude.exe
+
+.vercel

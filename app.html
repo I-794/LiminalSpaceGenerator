@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Level 0 — Liminal Space Generator</title>
+    <meta name="description" content="An endless, seeded Backrooms-style space you wander in first person." />
+    <link rel="stylesheet" href="./src/ui/overlay.css" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <!-- HUD: seed + buttons. Hidden until the experience is running. -->
+    <div id="hud" class="hud" hidden>
+      <div class="hud-seed">
+        <span class="hud-label">SEED</span>
+        <span id="seed-value" class="hud-seed-value">—</span>
+        <span class="hud-label hud-env-label">LEVEL</span>
+        <span id="env-value" class="hud-seed-value">—</span>
+      </div>
+      <div class="hud-buttons">
+        <button id="btn-new" type="button" class="hud-btn">New space</button>
+        <button id="btn-env" type="button" class="hud-btn">Switch level</button>
+        <button id="btn-copy" type="button" class="hud-btn">Copy link</button>
+      </div>
+    </div>
+
+    <!-- Start gate: required user gesture for pointer lock. -->
+    <div id="start" class="overlay">
+      <div class="overlay-card">
+        <h1 class="overlay-title">Level&nbsp;0</h1>
+        <p class="overlay-sub">You should not be here.</p>
+        <button id="btn-enter" type="button" class="overlay-enter">Click to enter</button>
+        <p class="overlay-hint">WASD to move · mouse to look · <kbd>Esc</kbd> to release</p>
+      </div>
+    </div>
+
+    <!-- Paused state (pointer lock released). -->
+    <div id="paused" class="overlay" hidden>
+      <div class="overlay-card">
+        <p class="overlay-sub">Paused</p>
+        <button id="btn-resume" type="button" class="overlay-enter">Click to resume</button>
+      </div>
+    </div>
+
+    <!-- Desktop-only notice for touch devices. -->
+    <div id="touch-block" class="overlay" hidden>
+      <div class="overlay-card">
+        <h1 class="overlay-title">Best on desktop</h1>
+        <p class="overlay-sub">
+          This space is explored with a keyboard and mouse. Pointer lock isn't
+          available on touch devices, so there's nothing to wander here.
+        </p>
+        <a class="overlay-enter" href="./index.html">Back</a>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

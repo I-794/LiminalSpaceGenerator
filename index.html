@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liminal Space Generator — Level 0</title>
+    <meta
+      name="description"
+      content="An endless, seeded, Backrooms-style yellow room you wander in first person. Every space lives in its link."
+    />
+    <meta property="og:title" content="Liminal Space Generator — Level 0" />
+    <meta
+      property="og:description"
+      content="Wander a seeded fluorescent maze in first person. Share the exact space by copying its link."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="./src/landing/landing.css" />
+  </head>
+  <body>
+    <!-- Fixed film-grain overlay (pointer-events none, never on a scrolling container). -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">LEVEL_0</span>
+        <span class="brand-sub">liminal space generator</span>
+      </a>
+      <a class="nav-cta" href="./app.html">Enter</a>
+    </header>
+
+    <main>
+      <!-- HERO. Original CSS-rendered corridor (the real aesthetic, CC0, no scraped art). -->
+      <section class="hero">
+        <div class="corridor" aria-hidden="true">
+          <div class="plane ceiling"></div>
+          <div class="plane floor"></div>
+          <div class="plane wall left"></div>
+          <div class="plane wall right"></div>
+          <div class="light-bar"></div>
+          <div class="haze"></div>
+        </div>
+
+        <div class="hero-content">
+          <p class="eyebrow">Floor level 0 · mono-yellow</p>
+          <h1 class="hero-title">An endless room<br />you'll never map.</h1>
+          <p class="hero-sub">
+            Wander a seeded fluorescent maze in first person. Share the exact
+            space by copying its link.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="./app.html">Enter the space</a>
+            <a class="btn btn-ghost" href="#about">What is this</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT IS THIS -->
+      <section class="about" id="about">
+        <div class="about-grid">
+          <h2 class="section-title">No exit, no objective, no map.</h2>
+          <div class="about-body">
+            <p>
+              You spawn alone in a humming yellow hallway and you walk. The walls
+              keep coming. There is nothing to find and no way out, which is the
+              entire point. It is a place to be lost in on purpose.
+            </p>
+            <p>
+              Everything you see is generated from scratch and free of any scraped
+              imagery: the wallpaper, the damp carpet, the buzzing lights. Just an
+              original take on a feeling a lot of people already recognise.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS (bento: one wide cell + two) -->
+      <section class="works">
+        <h2 class="section-title">How a space holds together.</h2>
+        <div class="bento">
+          <article class="cell cell-wide">
+            <h3>Seeded and shareable</h3>
+            <p>
+              Every space is one number, carried in the URL. Copy the link and a
+              friend drops into the exact same maze, wall for wall.
+            </p>
+            <code class="url-chip">/app?seed=damp-corridor-4817</code>
+          </article>
+
+          <article class="cell cell-pattern">
+            <h3>Endlessly generated</h3>
+            <p>
+              Rooms stream in around you as you move and fade out behind you. Walk
+              for an hour and you never reach an edge.
+            </p>
+          </article>
+
+          <article class="cell cell-tint">
+            <h3>Atmosphere over action</h3>
+            <p>
+              Flickering tubes, thick fog, a faint grain over everything. No
+              enemies, no score. Only the hum and the carpet.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- FINAL CTA (full-width statement, different layout family) -->
+      <section class="closer">
+        <p class="closer-line">It is quiet in there.</p>
+        <a class="btn btn-primary btn-lg" href="./app.html">Step inside</a>
+        <p class="closer-note">Keyboard and mouse. Best on desktop.</p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>Liminal Space Generator</span>
+      <span>Procedurally generated. CC0 visuals.</span>
+    </footer>
+
+    <script type="module" src="./src/landing/reveal.ts"></script>
+  </body>
+</html>
