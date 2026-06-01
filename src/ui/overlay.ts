@@ -17,6 +17,8 @@ export interface Overlay {
   showStart: () => void;
   showPaused: () => void;
   hideOverlays: () => void;
+  showJumpscare: () => void;
+  hideJumpscare: () => void;
   toast: (msg: string) => void;
 }
 
@@ -45,6 +47,7 @@ export function createOverlay(handlers: OverlayHandlers): Overlay {
   const envValue = $<HTMLSpanElement>("env-value");
   const startEl = $<HTMLDivElement>("start");
   const pausedEl = $<HTMLDivElement>("paused");
+  const jumpscareEl = $<HTMLDivElement>("jumpscare");
 
   $("btn-enter").addEventListener("click", handlers.onEnter);
   $("btn-resume").addEventListener("click", handlers.onEnter);
@@ -74,6 +77,15 @@ export function createOverlay(handlers: OverlayHandlers): Overlay {
       startEl.hidden = true;
       pausedEl.hidden = true;
       hud.hidden = false;
+    },
+    showJumpscare(): void {
+      jumpscareEl.hidden = false;
+      void jumpscareEl.offsetWidth; // restart the animation
+      jumpscareEl.classList.add("show");
+    },
+    hideJumpscare(): void {
+      jumpscareEl.classList.remove("show");
+      jumpscareEl.hidden = true;
     },
     toast(msg: string): void {
       if (!toastEl) {

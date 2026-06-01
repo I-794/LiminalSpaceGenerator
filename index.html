@@ -8,12 +8,28 @@
       name="description"
       content="An endless, seeded, Backrooms-style yellow room you wander in first person. Every space lives in its link."
     />
+    <!-- Open Graph / Discord embed -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Liminal Space Generator" />
     <meta property="og:title" content="Liminal Space Generator — Level 0" />
     <meta
       property="og:description"
-      content="Wander a seeded fluorescent maze in first person. Share the exact space by copying its link."
+      content="Wander a seeded fluorescent maze in first person. Something hunts the halls. Share the exact space by copying its link."
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://liminal-space-generator.vercel.app/" />
+    <meta property="og:image" content="https://liminal-space-generator.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="An endless room you'll never map." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Liminal Space Generator — Level 0" />
+    <meta
+      name="twitter:description"
+      content="A seeded Backrooms you can share by link. Something else is in there with you."
+    />
+    <meta name="twitter:image" content="https://liminal-space-generator.vercel.app/og.png" />
+    <!-- Colours the left bar of the Discord embed -->
+    <meta name="theme-color" content="#e3d258" />
     <link rel="stylesheet" href="./src/landing/landing.css" />
   </head>
   <body>
@@ -37,6 +53,7 @@
           <div class="plane wall left"></div>
           <div class="plane wall right"></div>
           <div class="light-bar"></div>
+          <div class="figure"></div>
           <div class="haze"></div>
         </div>
 
@@ -61,13 +78,13 @@
           <div class="about-body">
             <p>
               You spawn alone in a humming yellow hallway and you walk. The walls
-              keep coming. There is nothing to find and no way out, which is the
-              entire point. It is a place to be lost in on purpose.
+              keep coming. There is nothing to find and no clean way out, which is
+              most of the point. It is a place to be lost in on purpose.
             </p>
             <p>
-              Everything you see is generated from scratch and free of any scraped
-              imagery: the wallpaper, the damp carpet, the buzzing lights. Just an
-              original take on a feeling a lot of people already recognise.
+              You are not quite alone. Something tall keeps to the far end of the
+              halls, and when it notices you it stops wandering. Get caught and the
+              space dissolves, dropping you into a different one.
             </p>
           </div>
         </div>
@@ -95,10 +112,10 @@
           </article>
 
           <article class="cell cell-tint">
-            <h3>Atmosphere over action</h3>
+            <h3>Dread, not a scoreboard</h3>
             <p>
-              Flickering tubes, thick fog, a faint grain over everything. No
-              enemies, no score. Only the hum and the carpet.
+              Flickering tubes, thick fog, a faint grain over everything. No score
+              and no map. Just the hum, the carpet, and whatever is down the hall.
             </p>
           </article>
         </div>

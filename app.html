@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Level 0 — Liminal Space Generator</title>
     <meta name="description" content="An endless, seeded Backrooms-style space you wander in first person." />
+    <!-- Open Graph / Discord embed -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Liminal Space Generator" />
+    <meta property="og:title" content="Liminal Space Generator — Level 0" />
+    <meta
+      property="og:description"
+      content="An endless, seeded Backrooms you wander in first person. Something hunts the halls."
+    />
+    <meta property="og:url" content="https://liminal-space-generator.vercel.app/app" />
+    <meta property="og:image" content="https://liminal-space-generator.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="An endless room you'll never map." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://liminal-space-generator.vercel.app/og.png" />
+    <meta name="theme-color" content="#e3d258" />
     <link rel="stylesheet" href="./src/ui/overlay.css" />
   </head>
   <body>
@@ -40,7 +56,24 @@
       <div class="overlay-card">
         <p class="overlay-sub">Paused</p>
         <button id="btn-resume" type="button" class="overlay-enter">Click to resume</button>
+        <p class="overlay-hint"><a class="back-link" href="./index.html">← Back to entrance</a></p>
       </div>
+    </div>
+
+    <!-- Jumpscare: shown for a beat when an entity catches you, then respawn. -->
+    <div id="jumpscare" class="jumpscare" hidden aria-hidden="true">
+      <svg viewBox="0 0 200 240" class="jumpscare-figure" preserveAspectRatio="xMidYMid meet">
+        <!-- Original gaunt face, built from primitives (no copyrighted imagery). -->
+        <path d="M100 8 C58 8 44 52 46 104 C48 150 70 232 100 232 C130 232 152 150 154 104 C156 52 142 8 100 8 Z" fill="#cdc6a8" />
+        <path d="M62 92 C70 78 92 78 98 94 C90 90 72 90 62 100 Z" fill="#05040200" />
+        <ellipse cx="76" cy="100" rx="15" ry="22" fill="#0a0805" />
+        <ellipse cx="124" cy="100" rx="15" ry="22" fill="#0a0805" />
+        <ellipse cx="76" cy="104" rx="4" ry="6" fill="#f7f0d4" />
+        <ellipse cx="124" cy="104" rx="4" ry="6" fill="#f7f0d4" />
+        <path d="M100 120 L92 150 L108 150 Z" fill="#1c160c" />
+        <path d="M74 182 C86 210 114 210 126 182 C114 196 86 196 74 182 Z" fill="#08060300" stroke="#15110a" stroke-width="3" />
+        <path d="M84 184 q16 26 32 0 q-16 10 -32 0 Z" fill="#0a0805" />
+      </svg>
     </div>
 
     <!-- Desktop-only notice for touch devices. -->

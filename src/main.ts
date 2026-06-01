@@ -32,6 +32,8 @@ import { applyMood, createStage, handleResize } from "./render/Renderer";
 import { FlickerLights } from "./render/lights";
 import { createComposer } from "./render/postprocessing";
 import { FirstPersonControls } from "./controls/FirstPersonControls";
+import { EntityManager } from "./entities/EntityManager";
+import { playSting } from "./entities/sting";
 import { createOverlay, isTouchDevice, showTouchBlock } from "./ui/overlay";
 
 // Pointer lock is impossible on touch devices — show the desktop-only notice and stop.
@@ -90,14 +92,51 @@ function start(): void {
   spawn();
   world.update(controls.position);
 
+  // Hostile entities. They only move while the pointer is locked, and freeze
+  // during a catch (caught = true) until the respawn completes.
+  let audio: AudioContext | null = null;
+  let caught = false;
+  const entities = new EntityManager(
+    stage.scene,
+    (p) => world.getColliders(p),
+    () => onCaught(),
+  );
+  entities.reset(controls.position);
+
+  function onCaught(): void {
+    if (caught) return;
+    caught = true;
+    overlay.showJumpscare();
+    if (audio) playSting(audio);
+    window.setTimeout(() => {
+      // Caught -> dropped into a brand new space (new seed), entities reset.
+      seed = newRandomSeed();
+      worldSeed = xmur3(seed);
+      world.reseed(worldSeed);
+      spawn();
+      world.update(controls.position);
+      entities.reset(controls.position);
+      overlay.setSeed(seed);
+      overlay.hideJumpscare();
+      caught = false;
+    }, 1050);
+  }
+
   const overlay = createOverlay({
-    onEnter: () => controls.lock.lock(),
+    onEnter: () => {
+      // Create/resume the audio context from this user gesture so the catch
+      // sting can play later.
+      if (!audio) audio = new AudioContext();
+      void audio.resume();
+      controls.lock.lock();
+    },
     onNewSpace: () => {
       seed = newRandomSeed();
       worldSeed = xmur3(seed);
       world.reseed(worldSeed);
       spawn();
       world.update(controls.position);
+      entities.reset(controls.position);
       overlay.setSeed(seed);
       overlay.toast("New space generated");
     },
@@ -132,6 +171,7 @@ function start(): void {
 
     spawn();
     world.update(controls.position);
+    entities.reset(controls.position);
     overlay.setEnvName(env.name);
   }
 
@@ -149,6 +189,9 @@ function start(): void {
     const colliders = world.getColliders(controls.position);
     controls.update(dt, colliders);
     world.update(controls.position);
+    // Entities hunt only while you're actually in the space (locked) and not
+    // mid-catch.
+    if (controls.isLocked && !caught) entities.update(dt, controls.position);
     lights.update(controls.position, world.fixtures, elapsed);
     composer.render(dt);
   }

@@ -60,11 +60,11 @@ export class FirstPersonControls {
     const cos = Math.cos(yaw);
     let fz = 0;
     let rx = 0;
-    if (this.keys.has("KeyW") || this.keys.has("ArrowUp")) fz -= 1;
-    if (this.keys.has("KeyS") || this.keys.has("ArrowDown")) fz += 1;
+    if (this.keys.has("KeyW") || this.keys.has("ArrowUp")) fz += 1;
+    if (this.keys.has("KeyS") || this.keys.has("ArrowDown")) fz -= 1;
     if (this.keys.has("KeyD") || this.keys.has("ArrowRight")) rx += 1;
     if (this.keys.has("KeyA") || this.keys.has("ArrowLeft")) rx -= 1;
-    // forward = (-sin, -cos) in XZ; right = (cos, -sin)
+    // forward = (-sin, -cos) in XZ; right = (cos, -sin). fz>0 = forward.
     out.set(-sin * fz + cos * rx, 0, -cos * fz - sin * rx);
     if (out.lengthSq() > 0) out.normalize();
   }

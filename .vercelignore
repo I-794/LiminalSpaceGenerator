@@ -1,0 +1,8 @@
+# Vercel uploads the project source and builds remotely; keep the bundle small.
+node_modules
+dist
+.git
+.vercel
+
+# Stray 236 MB binary that lives in this folder — must never be uploaded.
+claude.exe

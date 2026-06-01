@@ -171,6 +171,27 @@ a {
     0 0 160px 60px rgba(227, 210, 88, 0.28);
   animation: flicker 5s steps(1) infinite;
 }
+/* A tall figure lurking near the vanishing point, surfacing through the haze. */
+.figure {
+  position: absolute;
+  left: 57.5%;
+  top: 44%;
+  width: 26px;
+  height: 96px;
+  transform: translate(-50%, -50%);
+  border-radius: 48% 48% 30% 30%;
+  background: linear-gradient(180deg, #1a1605 0%, #0a0803 70%, transparent 100%);
+  filter: blur(1.4px);
+  opacity: 0;
+  animation: lurk 11s ease-in-out infinite;
+}
+@keyframes lurk {
+  0%, 18% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  40% { opacity: 0.85; transform: translate(-50%, -52%) scale(1.05); }
+  62% { opacity: 0.55; transform: translate(-46%, -50%) scale(1); }
+  82%, 100% { opacity: 0; transform: translate(-44%, -50%) scale(1.1); }
+}
+
 /* Fog/vignette: yellow haze thick toward the centre, dark at the edges. */
 .haze {
   position: absolute;
@@ -444,6 +465,10 @@ section {
   }
   .light-bar {
     animation: none;
+  }
+  .figure {
+    animation: none;
+    opacity: 0.4;
   }
   .reveal {
     opacity: 1;

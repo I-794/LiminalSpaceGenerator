@@ -152,6 +152,61 @@ body {
   padding: 1px 5px;
 }
 
+.back-link {
+  color: var(--amber-dim);
+  border-bottom: 1px solid transparent;
+}
+.back-link:hover {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+/* ---- Jumpscare ---- */
+.jumpscare {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  background: #000;
+  overflow: hidden;
+}
+.jumpscare[hidden] {
+  display: none;
+}
+.jumpscare.show {
+  animation: js-flash 1.05s steps(1) forwards;
+}
+.jumpscare-figure {
+  width: min(78vh, 88vw);
+  height: auto;
+  transform: scale(0.2);
+  filter: drop-shadow(0 0 40px rgba(160, 30, 20, 0.6));
+}
+.jumpscare.show .jumpscare-figure {
+  animation: js-lunge 1.05s cubic-bezier(0.2, 0.7, 0.2, 1) forwards,
+    js-shake 0.07s linear 0s 9;
+}
+@keyframes js-flash {
+  0% { background: #b81d12; }
+  10% { background: #000; }
+  14% { background: #6e0f08; }
+  20%, 100% { background: #000; }
+}
+@keyframes js-lunge {
+  0% { transform: scale(0.2); opacity: 0; }
+  12% { opacity: 1; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1.18); opacity: 1; }
+}
+@keyframes js-shake {
+  0% { translate: 0 0; }
+  25% { translate: -8px 4px; }
+  50% { translate: 7px -6px; }
+  75% { translate: -5px -3px; }
+  100% { translate: 4px 5px; }
+}
+
 /* Tiny transient toast for "copied". */
 .toast {
   position: fixed;
